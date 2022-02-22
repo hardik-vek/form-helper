@@ -1,0 +1,37 @@
+
+<center>
+  <table>
+    <th> Name </th>
+    <th> Email </th>
+    <th> Password </th>
+    <th> Gender </th>
+    <th> Hobbies </th>
+    <th> Address </th>
+    <th> Mobile_number </th>
+    <th> Birth_date </th>
+    <th> Document </th>
+    <th colspan="1"> 1st House Name </th>
+    <th colspan="1"> 1st Street Name </th>
+    <th colspan="1"> 1st Road </th>
+    <th colspan ="3"> Actions</th>
+    <tr>
+      <td><%= @employee.employee_name %></td>
+      <td><%= @employee.email %></td>
+      <td><%= @employee.password %></td>
+      <td><%= @employee.gender %></td>
+      <td><%= @employee.hobbies %></td>
+      <td><%= @employee.address %></td>
+      <td><%= @employee.mobile_number %></td>
+      <td><%= @employee.birth_date %></td>
+      <td><%= @employee.document %></td>
+      <% @employee.emp_addresses.each do |address| %>
+      <td><%= address.house_name %></td>
+      <td><%= address.street_name %></td>
+      <td><%= address.road %></td>
+      <% end %>
+      <td><%= button_to "Edit", edit_employee_path(@employee), method: :get %></td>
+      <td><%= button_to "Delete", employee_path(@employee), method: :delete %></td>
+      <td><%= button_to "Back", employees_path, method: :get %></td>
+    </tr>
+    </table>
+</center>

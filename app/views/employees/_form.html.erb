@@ -1,0 +1,105 @@
+
+<%= form_with model: @employee do |form| %>
+
+<div> 
+  <%= form.label :Employee_name %><br>
+  <%= form.text_field :employee_name, placeholder: "Enter Your name" %>
+  <% @employee.errors.full_messages_for(:employee_name).each do |message| %>
+    <div><%= message %></div>
+  <% end %>
+</div>
+
+<div>   
+  <%= form.label :Email %><br>
+  <%= form.text_field :email, placeholder: "Enter Your Email" %>
+  <% @employee.errors.full_messages_for(:email).each do |message| %>
+    <div><%= message %></div>
+  <% end %>
+</div>
+
+<div> 
+  <%= form.label :Password %><br>
+  <%= form.password_field :password, placeholder: "Enter a password" %>
+  <% @employee.errors.full_messages_for(:password).each do |message| %>
+    <div><%= message %></div>
+  <% end %>
+</div>
+
+<div> 
+  <%= form.label :Gender %>
+  <%= form.radio_button :gender, "Male" %>
+  <%= form.label :Male %>
+  <%= form.radio_button :gender, "Female" %>
+  <%= form.label :Female %>
+  <% @employee.errors.full_messages_for(:gender).each do |message| %>
+    <div><%= message %></div>
+  <% end %>
+</div>
+
+<div> 
+  <%= form.label :Hobbies %>
+  <%= form.check_box :hobbies, {multiple: true}, "Reading",false %>
+  <%= form.label :Reading %>
+  <%= form.check_box :hobbies, {multiple: true}, "Singing",false %>
+  <%= form.label :Singing %>
+  <%= form.check_box :hobbies, {multiple: true}, "Travelling",false%>
+  <%= form.label :Travelling %>
+  <% @employee.errors.full_messages_for(:hobbies).each do |message| %>
+    <div><%= message %></div>
+  <% end %>
+</div>
+
+<div> 
+  <%= form.label :Address %><br>
+  <%= form.text_area :address, placeholder: "Enter a your address" %>
+  <% @employee.errors.full_messages_for(:address).each do |message| %>
+    <div><%= message %></div>
+  <% end %>
+</div>
+
+<div> 
+  <%= form.label :Mobile_number %><br>
+  <%= form.number_field :mobile_number %>
+  <% @employee.errors.full_messages_for(:mobile_number).each do |message| %>
+    <div><%= message %></div>
+  <% end %> 
+</div>
+
+<div> 
+  <%= form.label :Birth_date %><br>
+  <%= form.date_field :birth_date %>
+  <% @employee.errors.full_messages_for(:birth_date).each do |message| %>
+    <div><%= message %></div>
+  <% end %> 
+</div>
+
+<div> 
+  <%= form.label :Document %>
+  <%= form.file_field :document %>
+  <% @employee.errors.full_messages_for(:document).each do |message| %>
+    <div><%= message %></div>
+  <% end %>
+</div>
+
+<div>
+  Addresses:
+  <ul>
+    <%= form.fields_for :emp_addresses do |addresses_form| %>
+      <li>
+        <%= addresses_form.label :house_name %>
+        <%= addresses_form.text_field :house_name %>
+        <%= addresses_form.label :street_name %>
+        <%= addresses_form.text_field :street_name %>
+        <%= addresses_form.label :road %>
+        <%= addresses_form.text_field :road %>
+      </li>
+    <% end %>
+  </ul>
+</div>
+
+<div> 
+  <%= form.submit %>
+</div>
+
+<% end %>
+

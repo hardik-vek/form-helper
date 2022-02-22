@@ -1,0 +1,22 @@
+<h1 class="center">Employee Listing</h1>
+
+<center>
+  <table>
+    <th>Employee Name</th>
+    <th>Employee Email</th>
+    <th colspan ="3"> Actions</th>
+    <% @employees.each do |employee| %>
+    <tr>
+      <td><%= employee.employee_name %></td>
+      <td><%= employee.email %></td>
+      <td><%= button_to "Show", employee_path(employee), method: :get %></td>
+      <td><%= button_to "Edit", edit_employee_path(employee), method: :get %></td>
+      <td><%= button_to "Delete", employee_path(employee), method: :delete %></td>
+    </tr>
+    <% end %>  
+  </table>
+  <div class="center">
+    <%= link_to "new_employee", new_employee_path, method: :get %>
+  </div>
+
+</center>
